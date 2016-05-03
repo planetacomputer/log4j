@@ -5,15 +5,13 @@
  */
 package paquete2;
 
-import tutoriallog4j.Pojo;
-
 /**
  *
  * @author Ocupacional 2016-04
  */
 public class ClasePaquete2 {
     public static void main(String args[]){
-        Pojo p = new Pojo();
-        p.getAttr2();
+        //Pojo p = new Pojo();
+
     }
 }

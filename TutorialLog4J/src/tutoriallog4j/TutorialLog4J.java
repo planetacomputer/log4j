@@ -16,12 +16,17 @@ public class TutorialLog4J {
     final static Logger logger = Logger.getLogger(TutorialLog4J.class);
     
     public static void main(String[] args) {
+        int num1 = Integer.parseInt(args[0]);
+        int num2 = Integer.parseInt(args[1]);
+        System.out.println("La suma de " + args[0] + " y " + args[1] + " es: " + (num1 + num2));
         Pojo pj = new Pojo();
         
-        //PojoFilla pf = new Pojo();
-        Pojo p = new PojoFilla();
-        p.getAttr1();
-        p.getAttr2();
+        Pojo pj2 = new Pojo();
+        
+        System.out.println(pj.getAttr3());
+        
+        
+        
     }
     
 }

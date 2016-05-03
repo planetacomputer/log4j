@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/TutorialLog4J/nbproject/private/
+/TutorialLog4J/build/
+/TutorialLog4J/dist/
+/TutorialLog4J/lib/apache-log4j-1.2.17/

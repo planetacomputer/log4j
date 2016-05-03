@@ -16,7 +16,12 @@ public class TutorialLog4J {
     final static Logger logger = Logger.getLogger(TutorialLog4J.class);
     
     public static void main(String[] args) {
+        Pojo pj = new Pojo();
         
+        //PojoFilla pf = new Pojo();
+        Pojo p = new PojoFilla();
+        p.getAttr1();
+        p.getAttr2();
     }
     
 }

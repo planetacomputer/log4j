@@ -6,5 +6,5 @@
 6- Crear una pàgina html5 ex6.html. Crear un element div i un botó al costat que quan es cliqui cada vegada mostri al div  nombres aleatoris d'1 a 10.
 7- Crear una pàgina html5 ex7.html. Crear un array amb els nombres 3, 6, 1, 9, 11, 4, 5. A continuació aplicar loop per recòrre'ls i mostrar en un únic alert tots els imparells junts com a cadena en un alert.
 8- Crear una pàgina html5 ex8.html. Crear amb jquery una caixa div de color vermell que aparegui i desaparegui cada vegada que cliquem un botó que s'ha de trobar a la seva dreta.
-9- Crear una pàgina html5 ex9.html. Crear amb jquery una crida Ajax de tipus get al document nom.php passant el teu nom com a paràmetre. El programa retornarà la frase "Hola elteunom".
+9- Crear una pàgina html5 ex9.html. Crear amb jquery una crida Ajax de tipus get al document nom.php passant el teu nom com a paràmetre (el nom del paràmetre també ha de ser "nom"). El programa retornarà la frase "Hola elteunom".
 10- Crear una pàgina html5 ex10.html. Crear un div amb text vermell i un botó. Programar el botó amb una funció que vagi cambiant de manera alternativa el color del text de vermell a blau cada vegada que el cliquem (vermell-blau-vermell-blau...)

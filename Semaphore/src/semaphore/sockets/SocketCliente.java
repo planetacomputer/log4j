@@ -9,6 +9,7 @@ package semaphore.sockets;
 
 import java.net.*;
 import java.io.*;
+import java.util.Scanner;
 
 /**
  * Clase que crea un socket cliente, establece la conexi�n y lee los datos
@@ -28,6 +29,7 @@ public class SocketCliente
      
      public SocketCliente()
      {
+         
          try
          {
              /* Se crea el socket cliente */
@@ -35,8 +37,14 @@ public class SocketCliente
              System.out.println ("conectado");
              oos = new ObjectOutputStream(socket.getOutputStream());
              DatoSocket dato = new DatoSocket(17, "David");
+             dato.setAcertado(false);
+              System.out.println("Introduce numero apuesta:");
+             Scanner scan = new Scanner(System.in);
+             dato.setNumero(scan.nextInt());
              System.out.println("Sending request to Socket Server");
              oos.writeObject(dato);
+             
+     
              /* Se obtiene un stream de lectura para leer tipos simples de java */
              DataInputStream buffer = new DataInputStream (socket.getInputStream());
              

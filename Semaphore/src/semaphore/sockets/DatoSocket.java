@@ -7,6 +7,7 @@ package semaphore.sockets;
  *
  */
 
+import chuidiang.ejemplos.DatoUdp;
 import java.io.*;
 
 /**
@@ -15,11 +16,9 @@ import java.io.*;
 public class DatoSocket implements Serializable
  {
      /** Primer atributo, un int */
+     private String nombre;
      private int edad;
      private int numero;
-     
-     /** Segundo atributo, un String */
-     private String nombre;
      private boolean acertado;
 
     public boolean isAcertado() {
@@ -137,4 +136,66 @@ public class DatoSocket implements Serializable
          e.a = in.readInt();
          e.b = in.readUTF();
      }*/
+    
+    /**
+     * Se autoconvierte esta clase a array de bytes.
+     * @return La clase convertida a array de bytes.
+     */
+    public byte [] toByteArray()
+    {
+        try
+        {
+             // Se hace la conversi�n usando un ByteArrayOutputStream y un
+             // ObjetOutputStream.
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            ObjectOutputStream os = new ObjectOutputStream (bytes);
+            os.writeObject(this);
+            os.close();
+            return bytes.toByteArray();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static byte[] getBytesFromInputStream(InputStream is) throws IOException
+{
+    try (ByteArrayOutputStream os = new ByteArrayOutputStream();)
+    {
+        byte[] buffer = new byte[0xFFFF];
+
+        for (int len; (len = is.read(buffer)) != -1;)
+            os.write(buffer, 0, len);
+
+        os.flush();
+
+        return os.toByteArray();
+    }
+}
+    
+     /**
+     * Se convierte el array de bytes que recibe en un objeto DatoUdp.
+     * @param bytes El array de bytes
+     * @return Un DatoUdp.
+     */
+    public static DatoSocket fromByteArray (byte [] bytes)
+    {
+        try
+        {
+            // Se realiza la conversi�n usando un ByteArrayInputStream y un
+            // ObjectInputStream
+            ByteArrayInputStream byteArray = new ByteArrayInputStream(bytes);
+            ObjectInputStream is = new ObjectInputStream(byteArray);
+            DatoSocket aux = (DatoSocket)is.readObject();
+            is.close();
+            return aux;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

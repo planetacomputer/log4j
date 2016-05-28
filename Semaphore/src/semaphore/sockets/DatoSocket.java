@@ -7,7 +7,6 @@ package semaphore.sockets;
  *
  */
 
-import chuidiang.ejemplos.DatoUdp;
 import java.io.*;
 
 /**
@@ -145,8 +144,8 @@ public class DatoSocket implements Serializable
     {
         try
         {
-             // Se hace la conversi�n usando un ByteArrayOutputStream y un
-             // ObjetOutputStream.
+            // Se hace la conversi�n usando un ByteArrayOutputStream y un
+            // ObjetOutputStream.
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             ObjectOutputStream os = new ObjectOutputStream (bytes);
             os.writeObject(this);
@@ -160,37 +159,23 @@ public class DatoSocket implements Serializable
         }
     }
     
-    public static byte[] getBytesFromInputStream(InputStream is) throws IOException
-{
-    try (ByteArrayOutputStream os = new ByteArrayOutputStream();)
-    {
-        byte[] buffer = new byte[0xFFFF];
-
-        for (int len; (len = is.read(buffer)) != -1;)
-            os.write(buffer, 0, len);
-
-        os.flush();
-
-        return os.toByteArray();
-    }
-}
-    
      /**
      * Se convierte el array de bytes que recibe en un objeto DatoUdp.
      * @param bytes El array de bytes
      * @return Un DatoUdp.
      */
-    public static DatoSocket fromByteArray (byte [] bytes)
+    public static DatoSocket fromInputStream(InputStream inputStream)
     {
         try
         {
-            // Se realiza la conversi�n usando un ByteArrayInputStream y un
             // ObjectInputStream
-            ByteArrayInputStream byteArray = new ByteArrayInputStream(bytes);
-            ObjectInputStream is = new ObjectInputStream(byteArray);
-            DatoSocket aux = (DatoSocket)is.readObject();
-            is.close();
-            return aux;
+            ObjectInputStream ois = new ObjectInputStream(inputStream);
+            //convert ObjectInputStream object to String
+            DatoSocket message = new DatoSocket();
+            
+            message = (DatoSocket)ois.readObject();
+            
+            return message;
         }
         catch(Exception e)
         {

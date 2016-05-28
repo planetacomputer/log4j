@@ -38,30 +38,21 @@ public class SocketCliente
              oos = new ObjectOutputStream(socket.getOutputStream());
              DatoSocket dato = new DatoSocket(17, "David");
              dato.setAcertado(false);
-              System.out.println("Introduce numero apuesta:");
+             System.out.println("Introduce numero apuesta:");
              Scanner scan = new Scanner(System.in);
              dato.setNumero(scan.nextInt());
              System.out.println("Sending request to Socket Server");
              oos.writeObject(dato);
-             
-     
-             /* Se obtiene un stream de lectura para leer tipos simples de java */
-             DataInputStream buffer = new DataInputStream (socket.getInputStream());
-             
-             /**Se lee un entero y un String que nos env�a el servidor, 
-              escribiendo el resultado en pantalla */
-             System.out.println("Recibido " + buffer.readInt());
-             System.out.println ("Recibido " + buffer.readUTF());
-             
+                     
              /* Se obtiene un stream de lectura para leer objetos */
              ObjectInputStream bufferObjetos =
                 new ObjectInputStream (socket.getInputStream());
              
              /* Se lee un Datosocket que nos env�a el servidor y se muestra 
               * en pantalla */
-             
+       
              DatoSocket dato2 = (DatoSocket)bufferObjetos.readObject();
-             System.out.println ("Recibido " + dato2.toString());
+           
          }
          catch (Exception e)
          {

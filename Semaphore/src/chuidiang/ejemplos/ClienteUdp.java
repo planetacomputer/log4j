@@ -18,7 +18,7 @@ import java.util.Properties;
  * @author Chuidiang
  *
  */
-public class ClienteUdp implements OlympicMedal
+public class ClienteUdp implements IConstantes
 {
 
     /**

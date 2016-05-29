@@ -1,11 +1,14 @@
 /**
- * Javier Abellán, 16 Mayo 2006
+ * Javier Abellï¿½n, 16 Mayo 2006
  */
 package chuidiang.ejemplos;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.Properties;
 
 /**
  * Servidor de udp que se pone a la escucha de DatagramPacket que contengan
@@ -33,13 +36,22 @@ public class ServidorUdp
      */
     public ServidorUdp()
     {
+    	Properties propiedades = new Properties();
+        InputStream entrada = null;
         try
         {
+                entrada = new FileInputStream("red.properties");
+                // cargamos el archivo de propiedades
+                propiedades.load(entrada);
 
-            // La IP es la local, el puerto es en el que el servidor esté 
+                // obtenemos las propiedades y las imprimimos
+                System.out.println(propiedades.getProperty("HOST_CLIENTE"));
+
+
+            // La IP es la local, el puerto es en el que el servidor estï¿½ 
             // escuchando.
             DatagramSocket socket = new DatagramSocket(
-                    Constantes.PUERTO_DEL_SERVIDOR, InetAddress
+            		Integer.parseInt(propiedades.getProperty("PUERTO_DEL_SERVIDOR")), InetAddress
                             .getByName("localhost"));
 
             // Un DatagramPacket para recibir los mensajes.
